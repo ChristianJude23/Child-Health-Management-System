@@ -125,10 +125,25 @@ class LoginSignUp(tk.Tk):
         lbl_img.place(x=10, y=10)
         
         # Login Form Widgets
+        lbl_usernameLogin = tk.Label(self.frm_loginForm, text="Username", font=("Inter", 14), bg="#EEF7FF").place(x=50, y=40)
+        lbl_passwordLogin = tk.Label(self.frm_loginForm, text="Password", font=("Inter", 14), bg="#EEF7FF").place(x=50, y=130)
         
+        self.ent_usernameLogin = tk.Entry(self.frm_loginForm, bd=1, highlightthickness=0, font=("Inter", 14)) 
+        self.ent_passwordLogin = tk.Entry(self.frm_loginForm, bd=1, highlightthickness=0, font=("Inter", 14), show="*")
+             
+        self.ent_usernameLogin.place(x=50, y=70, width=350, height=30)
+        self.ent_passwordLogin.place(x=50, y=160, width=350, height=30)
         
-        
-    
+        self.btn_loginForm_img = PhotoImage(file=self.RelativeToAssets("BTN Log In Form.png"))
+        self.btn_loginForm = tk.Button(
+            self.frm_loginForm,
+            image=self.btn_loginForm_img,
+            borderwidth=0,
+            cursor="hand2",
+            command=lambda: print("BTN Press")
+        )
+        self.btn_loginForm.place(x=120, y=230)
+
     def SignUpFrameWdgets(self):
         self.frm_MainHome.place_forget()
         self.frm_MainLogin.place_forget()
