@@ -24,7 +24,7 @@ class LoginSignUp(tk.Tk):
         self.frm_sideBar = tk.Frame(self, width=300, height=600, bg="#EEF7FF")
         self.frm_MainHome = tk.Frame(self, width=800, height=600, bg="#CDE8E5")
         self.frm_MainLogin = tk.Frame(self, width=800, height=600, bg="#CDE8E5")
-        self.frm_MainSigUp = tk.Frame(self, width=800, height=600, bg="#CDE8E5")
+        self.frm_MainSignUp = tk.Frame(self, width=800, height=600, bg="#CDE8E5")
         
         # Frame pos
         self.frm_sideBar.place(x=0, y=0)
@@ -105,11 +105,11 @@ class LoginSignUp(tk.Tk):
     def LoginFrameWidgets(self):
         # Frames
         self.frm_MainHome.place_forget()
-        self.frm_MainSigUp.place_forget()
+        self.frm_MainSignUp.place_forget()
         self.frm_loginForm = tk.Frame(self.frm_MainLogin, width=450, height=350, bg="#CDE8E5")
         
-        self.frm_loginForm.place(x=160, y=130)
         self.frm_MainLogin.place(x=300, y=0)
+        self.frm_loginForm.place(x=170, y=130)
         
         # Title
         lbl_title = tk.Label(self.frm_MainLogin, text="Child Health Management System", font=("Inter", 24, "bold"), bg="#CDE8E5").place(x=130, y=20)
@@ -134,6 +134,7 @@ class LoginSignUp(tk.Tk):
         self.ent_usernameLogin.place(x=50, y=70, width=350, height=30)
         self.ent_passwordLogin.place(x=50, y=160, width=350, height=30)
         
+        # Login BTN
         self.btn_loginForm_img = PhotoImage(file=self.RelativeToAssets("BTN Log In Form.png"))
         self.btn_loginForm = tk.Button(
             self.frm_loginForm,
@@ -147,10 +148,48 @@ class LoginSignUp(tk.Tk):
     def SignUpFrameWdgets(self):
         self.frm_MainHome.place_forget()
         self.frm_MainLogin.place_forget()
-        self.frm_MainSigUp.place(x=300, y=0)
+        
+        # Frames
+        self.frm_signupForm = tk.Frame(self.frm_MainSignUp, width=450, height=450, bg="#CDE8E5")
+        
+        self.frm_MainSignUp.place(x=300, y=0)
+        self.frm_signupForm.place(x=180, y=100)
         
         # Title
-        lbl_title = tk.Label(self.frm_MainSigUp, text="Child Health Management System", font=("Inter", 24, "bold"), bg="#CDE8E5").place(x=130, y=20)
+        lbl_title = tk.Label(self.frm_MainSignUp, text="Child Health Management System", font=("Inter", 24, "bold"), bg="#CDE8E5").place(x=130, y=20)
+        
+         # Frame BG Image
+        img_path = self.RelativeToAssets("SignUpFrame.png")
+        image = Image.open(img_path)
+        resized_image = image.resize((400, 400))
+        self.frm_signupForm_img = ImageTk.PhotoImage(resized_image)
+
+        lbl_img = tk.Label(self.frm_signupForm, image=self.frm_signupForm_img, bg="#CDE8E5")
+        lbl_img.place(x=10, y=10)
+        
+        # Login Form Widgets
+        lbl_usernameSignUp = tk.Label(self.frm_signupForm, text="Username", font=("Inter", 14), bg="#EEF7FF").place(x=50, y=40)
+        lbl_passwordSignUp = tk.Label(self.frm_signupForm, text="Password", font=("Inter", 14), bg="#EEF7FF").place(x=50, y=120)
+        lbl_confirmPasswordSignUp = tk.Label(self.frm_signupForm, text="Confirm Password", font=("Inter", 14), bg="#EEF7FF").place(x=50, y=200)
+        
+        self.ent_usernameSignUp = tk.Entry(self.frm_signupForm, bd=1, highlightthickness=0, font=("Inter", 14)) 
+        self.ent_passwordSignUp = tk.Entry(self.frm_signupForm, bd=1, highlightthickness=0, font=("Inter", 14), show="*")
+        self.ent_confirmPasswordSignUp = tk.Entry(self.frm_signupForm, bd=1, highlightthickness=0, font=("Inter", 14), show="*")
+             
+        self.ent_usernameSignUp.place(x=50, y=70, width=320, height=30)
+        self.ent_passwordSignUp.place(x=50, y=150, width=320, height=30)
+        self.ent_confirmPasswordSignUp.place(x=50, y=230, width=320, height=30)
+        
+        # SignUp BTN
+        self.btn_signUpForm_img = PhotoImage(file=self.RelativeToAssets("BTN Sign Up Form.png"))
+        self.btn_signUpForm = tk.Button(
+            self.frm_signupForm,
+            image=self.btn_signUpForm_img,
+            borderwidth=0,
+            cursor="hand2",
+            command=lambda: print("BTN Press")
+        )
+        self.btn_signUpForm.place(x=110, y=300)
     
     
     # Image path finding
